@@ -15,16 +15,17 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
     @GetMapping(path = "/max-salary")
-    public double MaxSalaryFromDepartment(@RequestParam("departmentId") int department){
-        return DepartmentService.departmentMax(department);
+    public Employee MaxSalaryFromDepartment(@RequestParam("departmentId") int department){
+        return departmentService.departmentMax(department);
     }
     @GetMapping(path = "/min-salary")
-    public double MinSalaryFromDepartment(@RequestParam("departmentId") int department){
-        return DepartmentService.departmentMin(department);
+    public Employee MinSalaryFromDepartment(@RequestParam("departmentId") int department){
+        return departmentService.departmentMin(department);
     }
     @GetMapping(path = "/all", params = "departmentId")
     public double AllSalaryFromDepartment(@RequestParam("departmentId") int department){
-        return DepartmentService.departmentSumm(department);
+       double summ = departmentService.departmentSumm(department);
+       return System.out.println("В отделе : " + department +  "Сумма зарплат в месяце : " +  summ);
     }
 
 

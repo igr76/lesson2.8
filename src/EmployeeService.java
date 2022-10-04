@@ -12,8 +12,6 @@ import static java.lang.Long.SIZE;
 public class EmployeeService {
     public static final Map<String, Employee> employees = new HashMap<>();
 
-   // public EmployeeService() {        this.employees = new ArrayList<>();
-
 
     public Map<String,Employee> add(String Name,  int department,double salary) {
         Employee employee = new Employee(Name, department,salary);
