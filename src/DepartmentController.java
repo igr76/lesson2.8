@@ -4,6 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
@@ -23,10 +27,16 @@ public class DepartmentController {
         return departmentService.departmentMin(department);
     }
     @GetMapping(path = "/all", params = "departmentId")
-    public double AllSalaryFromDepartment(@RequestParam("departmentId") int department){
-       double summ = departmentService.departmentSumm(department);
-       return System.out.println("В отделе : " + department +  "Сумма зарплат в месяце : " +  summ);
+    public Collection<Employee> AllSalaryFromDepartment(@RequestParam("departmentId") int department){
+       return departmentService.departmentSumm(department);
+
     }
+    @GetMapping(path = "/all", params = "departmentId")
+    public Map<Integer, List<Employee>> AllFromDepartment(@RequestParam("departmentId") int department){
+        return departmentService.allEmployeeOfDepartment();
+
+    }
+
 
 
 }

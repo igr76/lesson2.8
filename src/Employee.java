@@ -1,11 +1,14 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Employee {
        private int id;
-    private String name;
+       @JsonProperty
+       private String name;
     private int department;
     private static double salary;
-    private static int counter;
+    private int counter;
 
     public Employee(String name, int department,double salary) {
         this.name = name;
@@ -57,4 +60,6 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(id, name, department);
     }
+
+
 }
