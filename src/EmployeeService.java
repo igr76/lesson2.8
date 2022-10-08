@@ -1,5 +1,7 @@
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import javax.naming.Name;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Map;
 public class EmployeeService {
     private static final int LIMIT = 10;
     private final EmployeeService employeeService;
+    private final String swith = "QWERTYUIOPLKJHGFDSAZXCVBNMЙЦУКЕНГШЩЗХЭЖДЛОРПАВЫФЯЧСМИТЬБЮ";
     public static final Map<String, Employee> employees = new HashMap<>();
 
     public EmployeeService(EmployeeService employeeService) {
@@ -44,6 +47,15 @@ public class EmployeeService {
 
     }
     public List<Employee> getAll(){return  new ArrayList<>((employees.values()));    }
+
+    public boolean checkName(String Name) {
+        if (StringUtils.isEmpty(Name)) {
+                        if (StringUtils.startsWith(swith, Name)) {
+                System.out.println("Введите ФИО с заглавной буквы");
+            }return true;
+        }else return false;
+
+    }
 
 
 }
